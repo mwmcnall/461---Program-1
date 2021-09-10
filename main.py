@@ -1,16 +1,30 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from Hand import Hand
+from Deck import Deck
+from Simulator import Simulator
 
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    # Variables for main:
+    cardNum = 13
+    simNumber = 500
+    playerResponse = "y"
+
+    while (playerResponse.lower() == 'y'):
+        # Create Classes to use
+        hand = Hand()
+        deck = Deck()
+
+        # Deal 13 cards to Player
+        for _ in range(cardNum):
+            hand.AddCard(deck.DealCard())
+
+        simulator = Simulator(deck.GetCurrentDeck())
+        hand.PrintInfo()
+
+        simulator.RunSimulation(simNumber, hand.points)
+
+        playerResponse = input("Another hand[Y/N]?")
+
+    print("--> Program exiting. <--")
