@@ -11,7 +11,7 @@ class Hand:
 		card = Card(cardValue)
 		self.cards.append(card)
 		if (len(self.cards) > 13):
-			print("Can only hold 5 cards in a Hand")
+			print("Can only hold 13 cards in a Hand")
 			exit()
 
 	def HighCard(self):
